@@ -1,1 +1,362 @@
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GMI Tesalonika</title>
+    <style>
+        /* --- VARIABEL WARNA & RESET --- */
+        :root {
+            --primary-color: #003366; /* Biru Tua GMI */
+            --secondary-color: #f4a261; /* Aksen Emas/Oranye */
+            --text-dark: #333;
+            --text-light: #fff;
+            --bg-light: #f9f9f9;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- HEADER & NAVIGASI --- */
+        header {
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+            margin-left: 5px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: var(--secondary-color);
+            color: var(--text-light);
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #e76f51;
+        }
+
+        /* --- SECTION UMUM --- */
+        section {
+            padding: 60px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 10px auto 0;
+        }
+
+        /* --- TENTANG KAMI --- */
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* --- JADWAL IBADAH --- */
+        #jadwal {
+            background: var(--bg-light);
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .card .time {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        /* --- KONTAK & FOOTER --- */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .contact-info, .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: var(--primary-color);
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 0;
+                display: none; /* Tersembunyi di HP */
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">GMI <span>Tesalonika</span></div>
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="#home" onclick="toggleMenu()">Beranda</a></li>
+                <li><a href="#about" onclick="toggleMenu()">Sejarah</a></li>
+                <li><a href="#jadwal" onclick="toggleMenu()">Jadwal Ibadah</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <h1>GEREJA METHODIST INDONESIA</h1>
+        <p>"Jemaat Tesalonika Resor Ebenhaezer Distrik 6/II"</p>
+        <a href="#jadwal" class="btn">Bergabung Ibadah</a>
+    </section>
+
+    <!-- TENTANG KAMI -->
+    <section id="about">
+        <h2 class="section-title">Tentang Kami</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <h3>Sejarah Singkat</h3>
+                <p>Pada Minggu 11 Januari 2026 telah diresmikan Menjadi Pos Pelayanan GMI Tesalonika, oleh Ds. Pdt. Yohanes Eben Ezer Damanik, S.Th.,M.Min (Pimpinan GMI Distrik 6 Wil 2), dan bergabung ke Resor Ebenhaezer Batu Aji Baru, dihadiri oleh Lay Leader Distrik Bp.Cibro dan Majelis GMI Ebenhaezer. Pada Konres Mendatang akan diusulkan menjadi Jemaat Persiapan oleh Pimpinan Jemaat Pdt.Elsina Siregar. Penlok yang ditempatkan adalah Gr. Timoty Purba (Hal ini menjadi Momentum Sejarah berdirinya Pos GMI Tesalonika).
+			Pada Minggu 11 Januari 2026, Kepengurusan Pos GMI Tesalonika telah di lantik oleh Ds. Pdt. Yohanes Eben Ezer Damanik, S.Th.,M.Min sebagai pimpinan GMI Distrik 6 Wil. 2, sampai formasi kemajelisan terbentuk (status Jemaat persiapan).</p>
+                <br>
+                <h3>Visi & Misi</h3>
+                <p><strong>Visi:</strong> Gereja Bertumbuh Memberkati Semua Ciptaan </p>
+                <p><strong>Misi:</strong> Menumbuhkan dan Mengembangkan Spiritualitas Berdasarkan Firman Tuhan</p>
+            </div>
+            <div class="about-image">
+                <!-- Ganti URL ini dengan foto gedung gerej Anda -->
+                <img src="https://images.unsplash.com/photo-1771987785737-185cfb05b41b?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            </div>
+        </div>
+    </section>
+
+    <!-- JADWAL IBADAH -->
+    <section id="jadwal">
+        <h2 class="section-title">Jadwal Ibadah</h2>
+        <div class="schedule-grid">
+            <div class="card">
+                <h3>Kebaktian Umum</h3>
+                <p class="time">Pk.10.00 WIB</p>
+                <p>Ruko Golden BCI Lt.2</p>
+            </div>
+            <div class="card">
+                <h3>Ibadah Sekolah Minggu</h3>
+                <p class="time">Pk.10.00 WIB</p>
+                <p>Ruko Golden BCI Lt.2</p>
+            </div>
+            <div class="card">
+                <h3>Ibadah PRMI(Youth)</h3>
+                <p class="time">Pk.10.00 WIB</p>
+                <p>Ruko Golden BCI Lt.2</p>
+            </div>
+            <div class="card">
+                <h3>Ibadah P3MI</h3>
+                <p class="time">Sabtu Pk.19.30 WIB</p>
+                <p>Ruko Golden BCI Lt.2</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section id="contact">
+        <h2 class="section-title">Hubungi Kami</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Alamat Gereja</h3>
+                <p>Ruko Golden BCI T6-66-71</p>
+                <br>
+                <h3>Kontak</h3>
+                <p>Email: gmitesalonika@gmail.com</p>
+                <p>Telp:  082278773426</p>
+                <p>HP: 082278773426</p>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <input type="text" placeholder="Nama Anda" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                    <input type="email" placeholder="Email Anda" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                    <textarea placeholder="Pesan Anda" rows="5" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+                    <button type="submit" class="btn" style="border: none; cursor: pointer;">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 GMI Tesalonika. Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <script>
+        // Fungsi untuk toggle menu di HP
+        function toggleMenu() {
+            const nav = document.getElementById('nav-menu');
+            nav.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
